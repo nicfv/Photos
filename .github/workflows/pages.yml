@@ -28,8 +28,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Generate Indices
-        run: python3 --version |
-          python3 run.py
+        run: python3 run.py
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Build with Jekyll
