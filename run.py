@@ -33,7 +33,7 @@ i = open(os.path.join(base, indexFileName), 'x')
 i.write('# Homepage' + newLine + newLine)
 i.write('Hello, there! You stumbled across one of my many websites. This is just an informal space to show off my pictures from traveling.' + newLine + newLine)
 
-for directory in os.listdir(base):
+for directory in os.listdir(base).sort():
     if(os.path.isdir(directory) and not directory in ignore):
         print('Generating index in ' + directory + '...')
         currentPath = os.path.join(base, directory)
