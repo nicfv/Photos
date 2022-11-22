@@ -13,7 +13,7 @@ def generateTitle(raw) -> str:
     if found:
         months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ]
         year = found[1]
-        month = months[int(found[2])]
+        month = months[int(found[2]) - 1]
         location = found[3].replace('_', ' ')
         return location + ' (' + month + ', ' + year + ')'
     return None
