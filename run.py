@@ -3,10 +3,9 @@ import re
 from datetime import datetime
 
 base = '.'
-ignore = ['.git', '.github']
 extension = ['.jpg', '.JPG']
 indexFileName = 'index.md'
-newLine = '\r\n'
+newLine = '\n'
 
 # Generate a human-readable title given the raw folder name
 def generateTitle(raw) -> str:
@@ -26,9 +25,10 @@ i.write('Hello, there! You stumbled across one of my many websites. This is just
 
 # Get valid directories in base folder
 directories = os.listdir(base)
-directories = list(filter(lambda directory: os.path.isdir(directory) and not directory in ignore, directories))
+directories = list(filter(lambda directory: os.path.isdir(directory), directories))
 directories.sort()
 
+# Loop through each directory and generate the index
 for directory in directories:
     cleanName = generateTitle(directory)
     if not cleanName:
@@ -46,9 +46,9 @@ for directory in directories:
         splitName = os.path.splitext(fileName)
         if(os.path.isfile(finalPath) and splitName[1] in extension):
             f.write('![' + splitName[0] + '](' + fileName + ')' + newLine + newLine)
-    f.write('[Go Back](/)' + newLine)
+    f.write('[Go Back](/)')
     f.close()
     print('Success!')
 
-i.write('Last updated ' + datetime.now().strftime('%h %d, %Y'))
+i.write(newLine + 'Last updated ' + datetime.now().strftime('%h %d, %Y'))
 i.close()
